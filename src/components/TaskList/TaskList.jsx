@@ -1,4 +1,5 @@
 import React from "react";
+import TaskItem from "../TaskItem/TaskItem";
 
 const TaskList = ({ tasks }) => {
   return (
@@ -6,13 +7,8 @@ const TaskList = ({ tasks }) => {
       {
         tasks.lenght == 0 
         ? <h2>Aun no has ingresado tareas :( </h2>
-        : tasks.map((task) => (
-            <div>
-              <h3>{task.title}</h3>
-              <p>{task.description}</p>
-              <span>{task.createAt}</span>
-              <button>Finalizar</button>
-            </div>
+        : tasks.map(task => (
+            <TaskItem task={task} key={task.id}/>
           ))
       }
     </div>
