@@ -10,6 +10,9 @@ function App() {
     setTasks([...tasks, task]);
   }
 
+  const deleteTask = (taskId) => {
+    setTasks(tasks.filter(task => task.id != taskId))
+  }
   return (
     <>
       <div>
