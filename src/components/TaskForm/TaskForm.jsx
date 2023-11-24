@@ -18,7 +18,11 @@ const TaskForm = () => {
             </div>
             <div className="input-container">
               <label htmlFor="description">Ingrese una descripcion</label>
-              <input type="text" id="description" name="description" placeholder="Descripcion"/>
+              <textarea name="description" id="description" placeholder="Descripción"></textarea>
+            </div>
+            <div className="btn-container">
+              <button>Cancelar</button>
+              <button>Agregar</button>
             </div>
           </form>
         </div>
