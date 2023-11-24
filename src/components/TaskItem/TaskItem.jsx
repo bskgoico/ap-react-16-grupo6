@@ -6,7 +6,7 @@ const TaskItem = ({ task, deleteTask }) => {
       <h3>{task.title}</h3>
       <p>{task.description}</p>
       <span>{task.createAt}</span>
-      <button>Finalizar</button>
+      <button onClick={() => deleteTask(task.id)}>Finalizar</button>
     </div>
   );
 };
