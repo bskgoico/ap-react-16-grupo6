@@ -1,4 +1,5 @@
 import React from 'react'
+import './App.css';
 import { TaskList, TaskForm, TaskItem } from './components/index.js';
 
 function App() {
