@@ -5,6 +5,7 @@ import { TaskList, TaskForm, TaskItem } from './components/index.js';
 function App() {
 
   const [tasks, setTasks] = useState([]);
+  const [searchString, setSearchString] = useState('');
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
@@ -14,10 +15,14 @@ function App() {
     setTasks(tasks.filter(task => task.id != taskId))
   }
 
+  const handleChangeFilter = (e) => {
+    setSearchString(e.target.value)
+  }
+
   return (
     <>
       <div>
-        
+        <input type="text" placeholder='Escribe para buscar...' value={searchString} onChange={handleChangeFilter}/>
       </div>
         <TaskForm addTask={addTask}/>
         <TaskList tasks={tasks} deleteTask={deleteTask}/>
