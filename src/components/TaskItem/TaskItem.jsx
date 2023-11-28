@@ -1,12 +1,33 @@
 import React from "react";
+import TaskForm from "../TaskForm/TaskForm";
+import "./TaskItem.css";
+const TaskItem = ({ task, deleteTask, addTask, editTask, index}) => {
+  const calculateAnimationDelay = (sec) => {
+    const baseDelay = 0.5;
+    return sec * baseDelay;
+  };
 
-const TaskItem = ({ task, deleteTask }) => {
   return (
-    <div>
-      <h3>{task.title}</h3>
+    <div
+      className="item"
+      style={{
+        animation: "Fade 1s",
+        animationDelay: `${calculateAnimationDelay(index)}s`,
+      }}
+    >
+      <h2>{task.title}</h2>
       <p>{task.description}</p>
       <span>{task.createAt}</span>
-      <button onClick={() => deleteTask(task.id)}>Finalizar</button>
+      {task.checkbox ? (
+        <span>Tarea completada ✅</span>
+      ) : (
+        <span>Tarea por completar ⏳</span>
+      )}
+      <hr />
+      <section style={{ display: "flex", flexWrap: "wrap" }}>
+        <TaskForm editTask={editTask} edit={true} task={task} />
+        <button onClick={() => deleteTask(task.id)}>Eliminar</button>
+      </section>
     </div>
   );
 };
