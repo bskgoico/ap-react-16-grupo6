@@ -5,68 +5,66 @@ import "./TaskForm.css";
 
 const TaskForm = ({ addTask, task, editTask, edit }) => {
   const [isChecked, setIsChecked] = useState(false);
-	const [isCheckedEdit, setIsCheckedEdit] = useState(false);
+  const [isCheckedEdit, setIsCheckedEdit] = useState(false);
 
-	const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-	
-	const handleSetInitialCheck = () =>{
-		setIsCheckedEdit(task.checkbox)
-	}
+  const handleSetInitialCheck = () => {
+    setIsCheckedEdit(task.checkbox);
+  };
 
-	const handleOpenModal = () => {
-		setIsOpenModal(true);
-	};
+  const handleOpenModal = () => {
+    setIsOpenModal(true);
+  };
 
-	const handleCloseModal = () => {
-		setIsOpenModal(false);
-	};
+  const handleCloseModal = () => {
+    setIsOpenModal(false);
+  };
 
-	const handleTwoFunction = () =>{
-		handleOpenModal()
-		handleSetInitialCheck()
-	}
+  const handleTwoFunction = () => {
+    handleOpenModal();
+    handleSetInitialCheck();
+  };
 
-	const handleIsCheckedEdit = e => {
-		setIsCheckedEdit(e.target.checked);
-	};
+  const handleIsCheckedEdit = (e) => {
+    setIsCheckedEdit(e.target.checked);
+  };
 
-	const handleIsChecked = e => {
-		setIsChecked(e.target.checked);
-	};
+  const handleIsChecked = (e) => {
+    setIsChecked(e.target.checked);
+  };
 
-
-	const handleSubmitTask = e => {
-		if (edit === true) {
-			e.preventDefault();
-			const title = e.target.title.value;
-			const description = e.target.description.value;
-			const checkbox = isCheckedEdit;
-			const taskForm = {
-				title,
-				description,
-				checkbox,
-				createAt: new Date().toLocaleDateString('es-AR'),
-				id: task.id,
-			};
-			editTask(task.id, taskForm);
-			handleCloseModal();
-		} else {
-			e.preventDefault();
-			const title = e.target.title.value;
-			const description = e.target.description.value;
-			const checkbox = isChecked;
-			const task = {
-				title,
-				description,
-				checkbox,
-				createAt: new Date().toLocaleDateString('es-AR'),
-				id: uuidv4(),
-			};
-			addTask(task);
-			handleCloseModal();
-		}
-	};
+  const handleSubmitTask = (e) => {
+    if (edit === true) {
+      e.preventDefault();
+      const title = e.target.title.value;
+      const description = e.target.description.value;
+      const checkbox = isCheckedEdit;
+      const taskForm = {
+        title,
+        description,
+        checkbox,
+        createAt: new Date().toLocaleDateString("es-AR"),
+        id: task.id,
+      };
+      editTask(task.id, taskForm);
+      handleCloseModal();
+    } else {
+      e.preventDefault();
+      const title = e.target.title.value;
+      const description = e.target.description.value;
+      const checkbox = isChecked;
+      const task = {
+        title,
+        description,
+        checkbox,
+        createAt: new Date().toLocaleDateString("es-AR"),
+        id: uuidv4(),
+      };
+      addTask(task);
+      handleCloseModal();
+    }
+  };
 
   return (
     <div className="container-form">
