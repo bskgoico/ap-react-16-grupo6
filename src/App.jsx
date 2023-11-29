@@ -73,7 +73,7 @@ function App() {
 
   return (
 		<>
-			<h1>Lista de tareas 📝</h1>
+			<h1>LISTA DE TAREAS</h1>
 			<div className='container'>
 				<div className='controls'>
 					<input
